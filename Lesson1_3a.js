@@ -14,8 +14,17 @@ data.mousedown(function () {
     }
 });
 data.mouseup(function () {
-
-    if (result("krest")) {
+    var game = false;
+    $('td').each(function () {
+        if (this.className != 'krest' && this.className != 'null') {
+            game = true;
+        }
+    });
+    if (!game) {
+        alert('Кінець гри . Нічія');
+        end();
+        begin();
+    } else if (result("krest")) {
         alert('Кінець гри . Виграв Chip');
         end();
         begin();
