@@ -1,17 +1,26 @@
 let data = $('table');
 var t = [];
 var hod = true;
+console.log(data.tr);
 
 data.mousedown(function () {
     let findClick = event.target;
     if (findClick.tagName != 'TD') return;
-    if (hod) {
-        findClick.classList.add("krest");
-        hod = false;
-    } else {
-        findClick.classList.add("null");
-        hod = true;
+    if (!findClick.classList.contains("null") & !findClick.classList.contains("krest")) {
+        console.log(findClick.classList.contains("null"));
+        console.log(findClick.classList.contains("krest"));
+        if (hod) {
+            findClick.classList.add("krest");
+            hod = false;
+            console.log(hod);
+        } else {
+            findClick.classList.add("null");
+            hod = true;
+            console.log(hod);
+        }
+
     }
+
 });
 data.mouseup(function () {
     var game = false;
@@ -37,6 +46,8 @@ data.mouseup(function () {
     } else {
         step('.deil', '.chip');
     };
+
+
 
     function result(nameClass) {
         var t = $('td').map(function () {
